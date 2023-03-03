@@ -34,6 +34,8 @@ public class Spell : MonoBehaviour
 
     public InputActionProperty grip_Input;
 
+    Vector3 posAtStartCasting;
+
     public TrailRenderer trailRenderer;
     private void OnTriggerEnter(Collider other)
     {
@@ -41,9 +43,6 @@ public class Spell : MonoBehaviour
         if (other.CompareTag("Hand"))
         {
             handInSpell = true;
-
-            if (isCasting)
-                Path();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -86,12 +85,15 @@ public class Spell : MonoBehaviour
     /// </summary>
     void StartCast()
     {
+        posAtStartCasting = transform.position;
+        Debug.Log(posAtStartCasting);
         transform.parent = actifObj.transform;
-        transform.localPosition = _currentSpellScriptable.listPath[0];
         GetComponent<MeshRenderer>().material = _currentSpellScriptable.orb2;
         trailRenderer.time = 999999;
 
         currentSpellPathIndex = 0;
+
+        Path();
     }
     /// <summary>
     /// reset all cast done or in going
@@ -122,7 +124,9 @@ public class Spell : MonoBehaviour
         }
 
         // set the next location of the orb
-        transform.position = _currentSpellScriptable.listPath[currentSpellPathIndex];
+        transform.position = posAtStartCasting + _currentSpellScriptable.listPath[currentSpellPathIndex];
+
+        Debug.Log(posAtStartCasting + _currentSpellScriptable.listPath[currentSpellPathIndex]);
     }
     /// <summary>
     /// made all the path to the cast
