@@ -27,10 +27,13 @@ public class Spell : MonoBehaviour
     public int spellId;
     public int currentSpellPathIndex;
 
+    float timer = 0f;
+
     public bool handGrab;
     public bool handInSpell;
     public bool handStartSpellCast;
     public bool isCasting;
+    public bool spellDone;
 
     public InputActionProperty grip_Input;
 
@@ -55,14 +58,22 @@ public class Spell : MonoBehaviour
     private void Start()
     {
         transform.localPosition = _currentSpellScriptable.listPath[0];
+        grip_Input.action.canceled += StopGrab;
+    }
+    private void StopGrab(InputAction.CallbackContext ctx)
+    {
+        spellDone= false;
     }
     private void Update()
     {
+        timer += Time.deltaTime;
+
         handGrab = grip_Input.action.ReadValue<float>() >= 0.5f;
 
         // start a spell
-        if (handInSpell && handGrab)
+        if (!spellDone && handInSpell && handGrab && currentSpellPathIndex == 0)
         {
+            spellDone = true;
             handStartSpellCast = true;
             StartCast();
         }
@@ -79,14 +90,17 @@ public class Spell : MonoBehaviour
             isCasting = false;
             EndCast();
         }
+
+        if (handInSpell && isCasting && currentSpellPathIndex != 0 && timer > 0.05f)
+        {
+            Path();
+        }
     }
     /// <summary>
     /// start the spell when the hand grab the orb
     /// </summary>
     void StartCast()
     {
-        posAtStartCasting = transform.position;
-        Debug.Log(posAtStartCasting);
         transform.parent = actifObj.transform;
         GetComponent<MeshRenderer>().material = _currentSpellScriptable.orb2;
         trailRenderer.time = 999999;
@@ -123,10 +137,11 @@ public class Spell : MonoBehaviour
             currentSpellPathIndex++;
         }
 
+        timer = 0;
+        print("path");
         // set the next location of the orb
-        transform.position = posAtStartCasting + _currentSpellScriptable.listPath[currentSpellPathIndex];
+        transform.localPosition += _currentSpellScriptable.listPath[currentSpellPathIndex];
 
-        Debug.Log(posAtStartCasting + _currentSpellScriptable.listPath[currentSpellPathIndex]);
     }
     /// <summary>
     /// made all the path to the cast
@@ -134,5 +149,6 @@ public class Spell : MonoBehaviour
     void SuccesfullCast()
     {
         // Instantiate(currentSpellScriptable.spellObject)
+        EndCast();
     }
 }
