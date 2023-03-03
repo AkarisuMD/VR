@@ -8,7 +8,7 @@ public class Spell : MonoBehaviour
     public GameObject inactifObj;
     public GameObject actifObj;
 
-
+    public GameObject rightHant, leftHand;
 
     public List<SpellScriptable> spellScriptable;
     public SpellScriptable _currentSpellScriptable;
@@ -148,7 +148,7 @@ public class Spell : MonoBehaviour
     /// </summary>
     void SuccesfullCast()
     {
-        // Instantiate(currentSpellScriptable.spellObject)
+        Instantiate(currentSpellScriptable.spellObject, leftHand.transform.position + Vector3.forward * 2, leftHand.transform.rotation);
         EndCast();
     }
 }

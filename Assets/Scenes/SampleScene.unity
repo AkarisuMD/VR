@@ -413,6 +413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inactifObj: {fileID: 305217553}
   actifObj: {fileID: 364072246}
+  rightHant: {fileID: 334819389}
+  leftHand: {fileID: 1191884062}
   spellScriptable:
   - {fileID: 11400000, guid: 3b9e79c3d6a0b254e8bd7688cd547eef, type: 2}
   _currentSpellScriptable: {fileID: 11400000, guid: 3b9e79c3d6a0b254e8bd7688cd547eef,
@@ -423,6 +425,7 @@ MonoBehaviour:
   handInSpell: 0
   handStartSpellCast: 0
   isCasting: 0
+  spellDone: 0
   grip_Input:
     m_UseReference: 1
     m_Action:

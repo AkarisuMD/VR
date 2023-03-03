@@ -20,6 +20,7 @@ MonoBehaviour:
   - {x: -0.2, y: -0.1, z: 0}
   - {x: 0.2, y: -0.1, z: 0}
   - {x: 0.2, y: 0.1, z: 0}
-  spellObject: {fileID: 0}
+  spellObject: {fileID: 1444638899229730, guid: 18ed84bba105fb0419e3b2b89496b375,
+    type: 3}
   orb1: {fileID: 2100000, guid: 94c5404053d4f9640bc7684e33d920aa, type: 2}
   orb2: {fileID: 2100000, guid: ac7bb1da3b3834d468efe73909b17862, type: 2}
