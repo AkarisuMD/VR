@@ -7,12 +7,13 @@ public class FlipFlopGlobal : Singleton<FlipFlopGlobal>
 {
     public UnityEvent flipFlop;
 
-    private void Start()
+    private void Awake()
     {
         flipFlop = new UnityEvent();
     }
     public void FlipFlop()
     {
         flipFlop?.Invoke();
+        Debug.Log("flipflop");
     }
 }

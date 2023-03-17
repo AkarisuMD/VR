@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BoiteAMeuh : MonoBehaviour
+public class BoiteAFlipFlop : MonoBehaviour
 {
     public List<AudioClip> m_AudioClipList;
     public AudioSource source;
     private const float sideOffset = 45f;
+
+    [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private Material blue;
+    [SerializeField] private Material red;
     public enum sideType { Up, Mid, Down};
     public sideType side;
     public bool onceSide;
@@ -46,9 +50,13 @@ public class BoiteAMeuh : MonoBehaviour
     void Up()
     {
         source.PlayOneShot(m_AudioClipList[Random.Range(0, m_AudioClipList.Count)]);
+        FlipFlopGlobal.Instance.FlipFlop();
+        _meshRenderer.materials = new Material[] { blue };
     }
     void Down()
     {
         source.Stop();
+        FlipFlopGlobal.Instance.FlipFlop();
+        _meshRenderer.materials = new Material[] { red };
     }
 }

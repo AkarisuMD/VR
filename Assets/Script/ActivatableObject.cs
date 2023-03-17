@@ -6,7 +6,7 @@ public abstract class ActivatableObject : MonoBehaviour
 {
     public bool isActive;
     [SerializeField] protected bool isFlipFlopable;
-    [SerializeField] protected bool FFStartDesactive;
+    [SerializeField] protected bool flipFlop;
 
     [SerializeField] private int triggerNeeded = 1;
     private int actifTrigger = 0;
@@ -24,7 +24,7 @@ public abstract class ActivatableObject : MonoBehaviour
     }
     private void CheckIfDeactivateObject()
     {
-        if (FFStartDesactive)
+        if (flipFlop)
         {
             if (actifTrigger >= triggerNeeded)
             {
@@ -63,14 +63,14 @@ public abstract class ActivatableObject : MonoBehaviour
 
     public void FlipFlop()
     {
-        if (FFStartDesactive)
+        if (flipFlop)
         {
-            FFStartDesactive = !FFStartDesactive;
+            flipFlop = !flipFlop;
             CheckIfDeactivateObject();
         }
         else
         {
-            FFStartDesactive = !FFStartDesactive;
+            flipFlop = !flipFlop;
             CheckIfDeactivateObject();
         }
     }

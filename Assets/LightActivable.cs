@@ -12,7 +12,7 @@ public class LightActivable : ActivatableObject
     {
         base.Start();
 
-        if (!FFStartDesactive) { Activate(); }
+        if (flipFlop) { Activate(); }
         else { Deactivate(); }
     }
      public override void Activate()
