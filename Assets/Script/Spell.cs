@@ -58,11 +58,6 @@ public class Spell : MonoBehaviour
     private void Start()
     {
         transform.localPosition = _currentSpellScriptable.listPath[0];
-        grip_Input.action.canceled += StopGrab;
-    }
-    private void StopGrab(InputAction.CallbackContext ctx)
-    {
-        spellDone= false;
     }
     private void Update()
     {
@@ -91,16 +86,33 @@ public class Spell : MonoBehaviour
             EndCast();
         }
 
+        if (!handGrab && spellDone)
+        {
+            spellDone = false;
+        }
+
         if (handInSpell && isCasting && currentSpellPathIndex != 0 && timer > 0.05f)
         {
-            Path();
+            try
+            {
+                Path();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
     }
+
+    public Vector3 rotation;
     /// <summary>
     /// start the spell when the hand grab the orb
     /// </summary>
     void StartCast()
     {
+        actifObj.transform.position = transform.position;
+        actifObj.transform.rotation = transform.rotation;
         transform.parent = actifObj.transform;
         GetComponent<MeshRenderer>().material = _currentSpellScriptable.orb2;
         trailRenderer.time = 999999;
@@ -127,7 +139,7 @@ public class Spell : MonoBehaviour
     /// </summary>
     void Path()
     {
-        if(_currentSpellScriptable.listPath.Count <= currentSpellPathIndex)
+        if(_currentSpellScriptable.listPath.Count <= currentSpellPathIndex +1)
         {
             SuccesfullCast();
             return;
@@ -148,7 +160,7 @@ public class Spell : MonoBehaviour
     /// </summary>
     void SuccesfullCast()
     {
-        Instantiate(currentSpellScriptable.spellObject, leftHand.transform.position + Vector3.forward * 2, leftHand.transform.rotation);
+        // Instantiate(currentSpellScriptable.spellObject, leftHand.transform.position + Vector3.forward * 2, leftHand.transform.rotation);
         EndCast();
     }
 }
