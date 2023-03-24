@@ -10,4 +10,11 @@ public class SpellScriptable : ScriptableObject
     public List<Vector3> listPath;
     public GameObject spellObject;
     public Material orb1, orb2;
+
+    // stats
+    [Header("Stats"), Space(10)]
+    public bool isOffensif;
+    public int damage;
+    public float cooldown;
+    public float hitCooldown;
 }

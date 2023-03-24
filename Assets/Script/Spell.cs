@@ -8,7 +8,7 @@ public class Spell : MonoBehaviour
     public GameObject inactifObj;
     public GameObject actifObj;
 
-
+    public GameObject rightHant, leftHand;
 
     public List<SpellScriptable> spellScriptable;
     public SpellScriptable _currentSpellScriptable;
@@ -27,10 +27,13 @@ public class Spell : MonoBehaviour
     public int spellId;
     public int currentSpellPathIndex;
 
+    float timer = 0f;
+
     public bool handGrab;
     public bool handInSpell;
     public bool handStartSpellCast;
     public bool isCasting;
+    public bool spellDone;
 
     public InputActionProperty grip_Input;
 
@@ -58,11 +61,14 @@ public class Spell : MonoBehaviour
     }
     private void Update()
     {
+        timer += Time.deltaTime;
+
         handGrab = grip_Input.action.ReadValue<float>() >= 0.5f;
 
         // start a spell
-        if (handInSpell && handGrab)
+        if (!spellDone && handInSpell && handGrab && currentSpellPathIndex == 0)
         {
+            spellDone = true;
             handStartSpellCast = true;
             StartCast();
         }
@@ -79,14 +85,34 @@ public class Spell : MonoBehaviour
             isCasting = false;
             EndCast();
         }
+
+        if (!handGrab && spellDone)
+        {
+            spellDone = false;
+        }
+
+        if (handInSpell && isCasting && currentSpellPathIndex != 0 && timer > 0.05f)
+        {
+            try
+            {
+                Path();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
+
+    public Vector3 rotation;
     /// <summary>
     /// start the spell when the hand grab the orb
     /// </summary>
     void StartCast()
     {
-        posAtStartCasting = transform.position;
-        Debug.Log(posAtStartCasting);
+        actifObj.transform.position = transform.position;
+        actifObj.transform.rotation = transform.rotation;
         transform.parent = actifObj.transform;
         GetComponent<MeshRenderer>().material = _currentSpellScriptable.orb2;
         trailRenderer.time = 999999;
@@ -113,7 +139,7 @@ public class Spell : MonoBehaviour
     /// </summary>
     void Path()
     {
-        if(_currentSpellScriptable.listPath.Count <= currentSpellPathIndex)
+        if(_currentSpellScriptable.listPath.Count <= currentSpellPathIndex +1)
         {
             SuccesfullCast();
             return;
@@ -123,16 +149,18 @@ public class Spell : MonoBehaviour
             currentSpellPathIndex++;
         }
 
+        timer = 0;
+        print("path");
         // set the next location of the orb
-        transform.position = posAtStartCasting + _currentSpellScriptable.listPath[currentSpellPathIndex];
+        transform.localPosition += _currentSpellScriptable.listPath[currentSpellPathIndex];
 
-        Debug.Log(posAtStartCasting + _currentSpellScriptable.listPath[currentSpellPathIndex]);
     }
     /// <summary>
     /// made all the path to the cast
     /// </summary>
     void SuccesfullCast()
     {
-        // Instantiate(currentSpellScriptable.spellObject)
+        // Instantiate(currentSpellScriptable.spellObject, leftHand.transform.position + Vector3.forward * 2, leftHand.transform.rotation);
+        EndCast();
     }
 }

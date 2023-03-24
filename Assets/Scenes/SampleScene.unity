@@ -413,6 +413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inactifObj: {fileID: 305217553}
   actifObj: {fileID: 364072246}
+  rightHant: {fileID: 334819389}
+  leftHand: {fileID: 1191884062}
   spellScriptable:
   - {fileID: 11400000, guid: 3b9e79c3d6a0b254e8bd7688cd547eef, type: 2}
   _currentSpellScriptable: {fileID: 11400000, guid: 3b9e79c3d6a0b254e8bd7688cd547eef,
@@ -423,6 +425,7 @@ MonoBehaviour:
   handInSpell: 0
   handStartSpellCast: 0
   isCasting: 0
+  spellDone: 0
   grip_Input:
     m_UseReference: 1
     m_Action:
@@ -22857,9 +22860,10 @@ GameObject:
   - component: {fileID: 1725982600}
   - component: {fileID: 1725982599}
   - component: {fileID: 1725982598}
-  - component: {fileID: 1725982597}
   - component: {fileID: 1725982596}
   - component: {fileID: 1725982601}
+  - component: {fileID: 1725982602}
+  - component: {fileID: 1725982603}
   m_Layer: 0
   m_Name: XRRig
   m_TagString: Untagged
@@ -22910,24 +22914,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 1725982600}
---- !u!143 &1725982597
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725982592}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1725982598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22940,14 +22926,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf296fc962d7184ab14ad1841598d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_System: {fileID: 0}
+  m_System: {fileID: 1725982600}
   m_MoveSpeed: 1
   m_EnableStrafe: 1
   m_UseGravity: 1
   m_GravityApplicationMode: 0
   m_ForwardSource: {fileID: 0}
   m_LeftHandMoveAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Left Hand Move
       m_Type: 0
@@ -22957,7 +22943,8 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
   m_RightHandMoveAction:
     m_UseReference: 0
     m_Action:
@@ -23041,6 +23028,66 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+--- !u!114 &1725982602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725982592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2213c36610e3b1c4bbf886810ed9db12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 1725982600}
+  m_TurnAmount: 36
+  m_DebounceTime: 0.5
+  m_EnableTurnLeftRight: 1
+  m_EnableTurnAround: 1
+  m_LeftHandSnapTurnAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Hand Snap Turn
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 86ade0aa-9007-45ae-b48c-1d99cf7554e8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_RightHandSnapTurnAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Hand Snap Turn
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c199a139-be15-4eaa-bbcd-787a1ecf01d7
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+--- !u!143 &1725982603
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725982592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 0
+  m_StepOffset: 0
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.05, z: 0}
 --- !u!1 &1728657555
 GameObject:
   m_ObjectHideFlags: 0

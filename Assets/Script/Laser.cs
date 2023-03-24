@@ -17,7 +17,6 @@ public class Laser : MonoBehaviour
     {
         lr.gameObject.transform.localPosition= Vector3.zero;
         lr.SetPosition(0, Vector3.zero);
-        print(lr.gameObject.transform.position);
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(Emitter.transform.position, Emitter.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
@@ -40,7 +39,6 @@ public class Laser : MonoBehaviour
         else
         {
             lr.SetPosition(1, -transform.forward * 1000);
-            print("yes");
             Debug.DrawRay(Emitter.transform.position, Emitter.transform.TransformDirection(Vector3.forward) * 1000, Color.red);
             
         }

@@ -20,12 +20,10 @@ public class DoorScript : ActivatableObject
     {
         doorLeft.DOMove(doorLeftEnding.position, 1);
         doorRight.DOMove(doorRightEnding.position, 1);
-        print("open");
     }
     public override void Deactivate()
     {
         doorLeft.DOMove(doorLeftStartingPosition, 1);
         doorRight.DOMove(doorRightStartingPosition, 1);
-        print("unopen");
     }
 }

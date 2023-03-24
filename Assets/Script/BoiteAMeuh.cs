@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BoiteAMeuh : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BoiteAMeuh : MonoBehaviour
     public enum sideType { Up, Mid, Down};
     public sideType side;
     public bool onceSide;
+
     void Update()
     {
         if ((transform.eulerAngles.x < sideOffset || transform.eulerAngles.x > 360 - sideOffset) &&
@@ -32,12 +34,21 @@ public class BoiteAMeuh : MonoBehaviour
         if (sideType.Up == side && onceSide)
         {
             onceSide = false;
-            source.PlayOneShot(m_AudioClipList[Random.Range(0, m_AudioClipList.Count)]);
+            Up();
         }
         else if (sideType.Down == side && !onceSide)
         {
             onceSide = true;
-            source.Stop();
+            Down();
         }
+    }
+
+    void Up()
+    {
+        source.PlayOneShot(m_AudioClipList[Random.Range(0, m_AudioClipList.Count)]);
+    }
+    void Down()
+    {
+        source.Stop();
     }
 }
