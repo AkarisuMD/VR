@@ -111,8 +111,8 @@ public class Spell : MonoBehaviour
     /// </summary>
     void StartCast()
     {
-        actifObj.transform.position = transform.position;
-        actifObj.transform.rotation = transform.rotation;
+        actifObj.transform.position = inactifObj.transform.position;
+        actifObj.transform.rotation = inactifObj.transform.rotation;
         transform.parent = actifObj.transform;
         GetComponent<MeshRenderer>().material = _currentSpellScriptable.orb2;
         trailRenderer.time = 999999;
@@ -152,7 +152,7 @@ public class Spell : MonoBehaviour
         timer = 0;
         print("path");
         // set the next location of the orb
-        transform.localPosition += _currentSpellScriptable.listPath[currentSpellPathIndex];
+         transform.localPosition += _currentSpellScriptable.listPath[currentSpellPathIndex];
 
     }
     /// <summary>
@@ -160,7 +160,7 @@ public class Spell : MonoBehaviour
     /// </summary>
     void SuccesfullCast()
     {
-        // Instantiate(currentSpellScriptable.spellObject, leftHand.transform.position + Vector3.forward * 2, leftHand.transform.rotation);
+         Instantiate(currentSpellScriptable.spellObject, leftHand.transform.position, leftHand.transform.rotation);
         EndCast();
     }
 }

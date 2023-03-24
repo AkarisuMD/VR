@@ -16,7 +16,7 @@ public class Target : MonoBehaviour
     {
         spells= new List<SpellBehaviour>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.TryGetComponent<SpellBehaviour>(out SpellBehaviour sb))
         {
@@ -38,7 +38,7 @@ public class Target : MonoBehaviour
             spells[i].Hit(this);
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.TryGetComponent<SpellBehaviour>(out SpellBehaviour sb))
         {

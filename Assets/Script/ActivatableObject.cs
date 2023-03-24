@@ -58,11 +58,16 @@ public abstract class ActivatableObject : MonoBehaviour
         if (isFlipFlopable)
         {
             FlipFlopGlobal.Instance.flipFlop.AddListener(FlipFlop);
+            if (flipFlop)
+            {
+                CheckIfDeactivateObject();
+            }
         }
     }
 
     public void FlipFlop()
     {
+        Debug.Log($"FlipFlop , {name} , {flipFlop} ");
         if (flipFlop)
         {
             flipFlop = !flipFlop;
