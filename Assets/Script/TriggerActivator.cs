@@ -25,6 +25,7 @@ public class TriggerActivator : MonoBehaviour
             colliders.Add(other.gameObject);
             IsActive = true;
             print("Trigger Activit");
+            try { soundWhenActivated.Play(); } catch { }
             //SetTheLightColor(Color.green);
             ActivateOtherGameObject();
         }
