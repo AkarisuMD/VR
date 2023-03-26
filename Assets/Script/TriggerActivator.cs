@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD;
 
 public class TriggerActivator : MonoBehaviour
 {
@@ -25,9 +26,13 @@ public class TriggerActivator : MonoBehaviour
             colliders.Add(other.gameObject);
             IsActive = true;
             print("Trigger Activit");
-            try { soundWhenActivated.Play(); } catch { }
             //SetTheLightColor(Color.green);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Success");
             ActivateOtherGameObject();
+        }
+        else if(other.gameObject.tag != "Untagged" || other.gameObject.tag != "Player")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fail");
         }
     }
     private void OnTriggerExit(Collider other)
