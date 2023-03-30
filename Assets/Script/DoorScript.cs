@@ -12,10 +12,13 @@ public class DoorScript : ActivatableObject
     [SerializeField] private bool scale = false;
     [SerializeField] private Transform doorLeft;
     [SerializeField] private Transform doorRight;
+
+    [SerializeField] private Collider floorCollider;
     private void Awake()
     {
         doorRightStartingPosition = doorRight.position;
         doorLeftStartingPosition = doorLeft.position;
+        try { floorCollider.gameObject.SetActive(false); } catch { }
     }
     public override void Activate()
     {
@@ -29,6 +32,7 @@ public class DoorScript : ActivatableObject
             doorLeft.DOScale(new Vector3(0, 0, 0), 1);
             doorRight.DOScale(new Vector3(0, 0, 0), 1);
         }
+        try { floorCollider.gameObject.SetActive(true); } catch { }
     }
     public override void Deactivate()
     {
@@ -42,5 +46,6 @@ public class DoorScript : ActivatableObject
             doorLeft.DOScale(Vector3.one, 1);
             doorRight.DOScale(Vector3.one, 1);
         }
+        try { floorCollider.gameObject.SetActive(false); } catch { }
     }
 }

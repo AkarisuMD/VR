@@ -13,7 +13,6 @@ public abstract class ActivatableObject : MonoBehaviour
     [SerializeField] private int actifTrigger = 0;
     private void Awake()
     {
-        CheckIfDeactivateObject();
     }
     public abstract void Activate();
     public abstract void Deactivate();
