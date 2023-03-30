@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Spell : MonoBehaviour
 {
@@ -10,20 +11,13 @@ public class Spell : MonoBehaviour
 
     public GameObject rightHant, leftHand;
 
-    public List<SpellScriptable> spellScriptable;
     public SpellScriptable _currentSpellScriptable;
-    public SpellScriptable currentSpellScriptable
-    {
-        get
-        {
-            return _currentSpellScriptable;
-        }
-        set 
-        { 
-            _currentSpellScriptable = value;
-            // do something
-        }
-    }
+    public SpellScriptable shieldSpell;
+    public SpellScriptable missileSpell;
+
+    private bool _flipflop;
+
+
     public int spellId;
     public int currentSpellPathIndex;
 
@@ -58,6 +52,20 @@ public class Spell : MonoBehaviour
     private void Start()
     {
         transform.localPosition = _currentSpellScriptable.listPath[0];
+
+        FlipFlopGlobal.Instance.flipFlop.AddListener(FlipFlop);
+    }
+    void FlipFlop()
+    {
+        _flipflop = !_flipflop;
+        if (_flipflop)
+        {
+            _currentSpellScriptable = shieldSpell;
+        }
+        else
+        {
+            _currentSpellScriptable = missileSpell;
+        }
     }
     private void Update()
     {
@@ -160,7 +168,7 @@ public class Spell : MonoBehaviour
     /// </summary>
     void SuccesfullCast()
     {
-         Instantiate(currentSpellScriptable.spellObject, leftHand.transform.position, leftHand.transform.rotation);
+        Instantiate(_currentSpellScriptable.spellObject, leftHand.transform.position, leftHand.transform.rotation);
         EndCast();
     }
 }
