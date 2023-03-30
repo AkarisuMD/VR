@@ -6,12 +6,12 @@ public class Laser : MonoBehaviour
 {
     [SerializeField] private GameObject Emitter;
     [SerializeField] private GameObject Recepter;
-    [SerializeField] private DoorScript doorToUnlock;
+    [SerializeField] private List<DoorScript> doorToUnlock;
 
     [SerializeField] private LineRenderer lr;
     [SerializeField] private LayerMask layerMask;
 
-    public bool HitSomething = false;
+    public bool HitSomething = true;
 
     private void FixedUpdate()
     {
@@ -27,13 +27,19 @@ public class Laser : MonoBehaviour
             if (hit.collider.gameObject == Recepter && !HitSomething)
             {
                 HitSomething = true;
-                doorToUnlock.UnTrigger();
+                foreach(DoorScript door in doorToUnlock)
+                {
+                    door.UnTrigger();
+                }
             }
 
             if (hit.collider.gameObject != Recepter && HitSomething)
             {
                 HitSomething = false;
-                doorToUnlock.Trigger();
+                foreach (DoorScript door in doorToUnlock)
+                {
+                    door.Trigger();
+                }
             }
         }
         else
