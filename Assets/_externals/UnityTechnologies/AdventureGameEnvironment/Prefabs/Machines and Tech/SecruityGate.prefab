@@ -201,6 +201,9 @@ MonoBehaviour:
   scale: 1
   doorLeft: {fileID: 4255025603337190432}
   doorRight: {fileID: 7565789568302820428}
+  floorCollider: {fileID: 0}
+  changeLayerToRay:
+  - {fileID: 6624686075334604940}
 --- !u!1001 &4361272522288110539
 PrefabInstance:
   m_ObjectHideFlags: 0

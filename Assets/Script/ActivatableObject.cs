@@ -11,9 +11,6 @@ public abstract class ActivatableObject : MonoBehaviour
 
     [SerializeField] private int triggerNeeded = 1;
     [SerializeField] private int actifTrigger = 0;
-    private void Awake()
-    {
-    }
     public abstract void Activate();
     public abstract void Deactivate();
     public void Trigger()
@@ -68,11 +65,8 @@ public abstract class ActivatableObject : MonoBehaviour
         if (isFlipFlopable)
         {
             FlipFlopGlobal.Instance.flipFlop.AddListener(FlipFlop);
-            if (flipFlop)
-            {
-                CheckIfDeactivateObject();
-            }
         }
+        CheckIfDeactivateObject();
     }
 
     public void FlipFlop()

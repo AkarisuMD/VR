@@ -320,6 +320,9 @@ MonoBehaviour:
   scale: 1
   doorLeft: {fileID: 3345743414454837435}
   doorRight: {fileID: 9051533022741901527}
+  floorCollider: {fileID: 0}
+  changeLayerToRay:
+  - {fileID: 5660189341708690455}
 --- !u!1 &7157516960035592031
 GameObject:
   m_ObjectHideFlags: 0

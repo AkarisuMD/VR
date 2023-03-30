@@ -14,6 +14,7 @@ public class DoorScript : ActivatableObject
     [SerializeField] private Transform doorRight;
 
     [SerializeField] private Collider floorCollider;
+    [SerializeField] private List<Transform> changeLayerToRay;
     private void Awake()
     {
         doorRightStartingPosition = doorRight.position;
@@ -33,6 +34,17 @@ public class DoorScript : ActivatableObject
             doorRight.DOScale(new Vector3(0, 0, 0), 1);
         }
         try { floorCollider.gameObject.SetActive(true); } catch { }
+    }
+    private void Update()
+    {
+        if (isActive) foreach (var item in changeLayerToRay)
+            {
+                item.gameObject.layer = 2;
+            }
+        else foreach (var item in changeLayerToRay)
+            {
+                item.gameObject.layer = 0;
+            }
     }
     public override void Deactivate()
     {

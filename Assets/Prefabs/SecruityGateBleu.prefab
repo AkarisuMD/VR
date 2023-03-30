@@ -533,3 +533,6 @@ MonoBehaviour:
   scale: 1
   doorLeft: {fileID: 4291841069697215752}
   doorRight: {fileID: 7528989493046377828}
+  floorCollider: {fileID: 0}
+  changeLayerToRay:
+  - {fileID: 6587870606630152612}

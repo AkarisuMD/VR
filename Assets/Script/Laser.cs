@@ -12,6 +12,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     public bool HitSomething = true;
+    [SerializeField] private bool isInverted;
 
     private void FixedUpdate()
     {
@@ -27,18 +28,39 @@ public class Laser : MonoBehaviour
             if (hit.collider.gameObject == Recepter && !HitSomething)
             {
                 HitSomething = true;
-                foreach(DoorScript door in doorToUnlock)
+
+                if (!isInverted)
                 {
-                    door.UnTrigger();
+                    foreach (DoorScript door in doorToUnlock)
+                    {
+                        door.UnTrigger();
+                    }
+                }
+                else
+                {
+                    foreach (DoorScript door in doorToUnlock)
+                    {
+                        door.Trigger();
+                    }
                 }
             }
 
             if (hit.collider.gameObject != Recepter && HitSomething)
             {
                 HitSomething = false;
-                foreach (DoorScript door in doorToUnlock)
+                if (!isInverted)
                 {
-                    door.Trigger();
+                    foreach (DoorScript door in doorToUnlock)
+                    {
+                        door.Trigger();
+                    }
+                }
+                else
+                {
+                    foreach (DoorScript door in doorToUnlock)
+                    {
+                        door.UnTrigger();
+                    }
                 }
             }
         }

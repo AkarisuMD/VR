@@ -63,5 +63,7 @@ public class Target : MonoBehaviour
         {
             activatableObjects[i].Trigger();
         }
+
+        gameObject.SetActive(false);
     }
 }
