@@ -51,8 +51,6 @@ public class Spell : MonoBehaviour
     }
     private void Start()
     {
-        transform.localPosition = _currentSpellScriptable.listPath[0];
-
         FlipFlopGlobal.Instance.flipFlop.AddListener(FlipFlop);
     }
     void FlipFlop()
