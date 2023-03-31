@@ -70,6 +70,7 @@ public class Cible : MonoBehaviour
     {
         if (other.TryGetComponent<SpellBehaviour>(out SpellBehaviour sb))
         {
+            Debug.Log("Missile did it");
             if (!sb.GetSpriptable().isOffensif) return;
             trueflipFlop = !trueflipFlop;
 
