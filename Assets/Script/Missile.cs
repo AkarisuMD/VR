@@ -16,7 +16,7 @@ public class Missile : MonoBehaviour
         target = _target;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (target == null)
         {
@@ -31,6 +31,8 @@ public class Missile : MonoBehaviour
             HitTarget();
             return;
         }
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        transform.LookAt(target);
     }
     void HitTarget()
     {
