@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4049f37b08eed46b6aa54a1e4474f1, type: 3}
+  m_Name: Missille
+  m_EditorClassIdentifier: 
+  name: Missille
+  spriteSpell: {fileID: 0}
+  listPath:
+  - {x: 0.15, y: -0.1, z: 0.35}
+  - {x: -0.2, y: 0.05, z: 0}
+  - {x: -0.2, y: 0.05, z: -0.1}
+  - {x: 0.2, y: 0.05, z: 0.1}
+  - {x: 0.2, y: 0.05, z: 0}
+  spellObject: {fileID: 1072588823292892054, guid: 07a2a06be98d1f24098c9483822a3289,
+    type: 3}
+  orb1: {fileID: 2100000, guid: f557a0a59fc40df4fae274e5c219b457, type: 2}
+  orb2: {fileID: 2100000, guid: f557a0a59fc40df4fae274e5c219b457, type: 2}
+  isOffensif: 1
+  damage: 10
+  cooldown: 1
+  hitCooldown: 1

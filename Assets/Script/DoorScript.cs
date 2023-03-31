@@ -9,21 +9,55 @@ public class DoorScript : ActivatableObject
     [SerializeField] private Transform doorRightEnding;
     private Vector3 doorLeftStartingPosition;
     private Vector3 doorRightStartingPosition;
+    [SerializeField] private bool scale = false;
     [SerializeField] private Transform doorLeft;
     [SerializeField] private Transform doorRight;
+
+    [SerializeField] private Collider floorCollider;
+    [SerializeField] private List<Transform> changeLayerToRay;
     private void Awake()
     {
         doorRightStartingPosition = doorRight.position;
         doorLeftStartingPosition = doorLeft.position;
+        try { floorCollider.gameObject.SetActive(false); } catch { }
     }
     public override void Activate()
     {
-        doorLeft.DOMove(doorLeftEnding.position, 1);
-        doorRight.DOMove(doorRightEnding.position, 1);
+        if (!scale)
+        {
+            doorLeft.DOMove(doorLeftEnding.position, 1);
+            doorRight.DOMove(doorRightEnding.position, 1);
+        }
+        else
+        {
+            doorLeft.DOScale(new Vector3(0, 0, 0), 1);
+            doorRight.DOScale(new Vector3(0, 0, 0), 1);
+        }
+        try { floorCollider.gameObject.SetActive(true); } catch { }
+    }
+    private void Update()
+    {
+        if (isActive) foreach (var item in changeLayerToRay)
+            {
+                item.gameObject.layer = 2;
+            }
+        else foreach (var item in changeLayerToRay)
+            {
+                item.gameObject.layer = 0;
+            }
     }
     public override void Deactivate()
     {
-        doorLeft.DOMove(doorLeftStartingPosition, 1);
-        doorRight.DOMove(doorRightStartingPosition, 1);
+        if (!scale)
+        {
+            doorLeft.DOMove(doorLeftStartingPosition, 1);
+            doorRight.DOMove(doorRightStartingPosition, 1);
+        }
+        else
+        {
+            doorLeft.DOScale(Vector3.one, 1);
+            doorRight.DOScale(Vector3.one, 1);
+        }
+        try { floorCollider.gameObject.SetActive(false); } catch { }
     }
 }

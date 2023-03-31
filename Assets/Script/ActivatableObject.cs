@@ -7,19 +7,26 @@ public abstract class ActivatableObject : MonoBehaviour
     public bool isActive;
     [SerializeField] protected bool isFlipFlopable;
     [SerializeField] protected bool flipFlop;
+    [SerializeField] private bool inversed = false;
 
     [SerializeField] private int triggerNeeded = 1;
-    private int actifTrigger = 0;
+    [SerializeField] private int actifTrigger = 0;
     public abstract void Activate();
     public abstract void Deactivate();
     public void Trigger()
     {
-        actifTrigger++;
+        if (!inversed)
+            actifTrigger++;
+        else actifTrigger--;
         CheckIfDeactivateObject();
     }
     public void UnTrigger()
     {
-        actifTrigger--;
+        if (actifTrigger <= 0 && !inversed) return;
+        if (actifTrigger >= 0 && inversed) return;
+        if (!inversed)
+            actifTrigger--;
+        else actifTrigger++;
         CheckIfDeactivateObject();
     }
     private void CheckIfDeactivateObject()
@@ -59,10 +66,12 @@ public abstract class ActivatableObject : MonoBehaviour
         {
             FlipFlopGlobal.Instance.flipFlop.AddListener(FlipFlop);
         }
+        CheckIfDeactivateObject();
     }
 
     public void FlipFlop()
     {
+        Debug.Log($"FlipFlop , {name} , {flipFlop} ");
         if (flipFlop)
         {
             flipFlop = !flipFlop;

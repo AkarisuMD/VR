@@ -4,17 +4,18 @@ using UnityEngine;
 
 public abstract class SpellBehaviour : MonoBehaviour
 {
-    SpellScriptable spellScriptable;
+    [SerializeField] protected SpellScriptable spellScriptable;
     public SpellScriptable GetSpriptable() { return spellScriptable; }
-    float timer = 0;
+    protected float timer = 0;
 
-    private void Update()
+    protected virtual void Update()
     {
         timer -= Time.deltaTime;
     }
     public void Hit(Target target)
     {
-        if (timer < 0) return;
+        Debug.Log("Hit");
+        if (timer > 0) return;
         timer = spellScriptable.hitCooldown;
 
         Effect(target);

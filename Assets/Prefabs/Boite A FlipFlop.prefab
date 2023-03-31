@@ -380,10 +380,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AudioClipList:
-  - {fileID: 8300000, guid: 28040664ef066de47912f92cde9e3bc5, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 043833dd9ae01f94ea6ead128ae4bbfc, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
+  - {fileID: 8300000, guid: 341bef35a4deccf428d06f64bc105321, type: 3}
   source: {fileID: 1550116115}
   _meshRenderer: {fileID: 7335737226957823087}
   blue: {fileID: 2100000, guid: 94c5404053d4f9640bc7684e33d920aa, type: 2}
   red: {fileID: 2100000, guid: 05262d0d0a5551b47834f9c3490fc056, type: 2}
+  volumeBlue: {fileID: 0}
+  volumeRed: {fileID: 0}
   side: 0
   onceSide: 0
