@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4291841069697215752}
   - component: {fileID: 873827124949230253}
   - component: {fileID: 3153789031308056167}
+  - component: {fileID: 6200637727636147602}
   m_Layer: 0
   m_Name: SecurityGateBeams
   m_TagString: Untagged
@@ -166,6 +167,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6200637727636147602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514072260145870770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.934604, y: 1.229606, z: 7.189122}
+  m_Center: {x: 0.049978442, y: 1.0338248, z: 3.0946193}
 --- !u!1 &4108660868983855033
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +450,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6587870606630152612}
-  - component: {fileID: 7445223871935486430}
   m_Layer: 0
   m_Name: SecurityBeams
   m_TagString: Untagged
@@ -461,19 +474,6 @@ Transform:
   m_Father: {fileID: 3695198328378751684}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7445223871935486430
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8553816316909427436}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.934604, y: 6.2748137, z: 1}
-  m_Center: {x: 0.049978398, y: 1.9512095, z: 0}
 --- !u!1 &8583696341878626287
 GameObject:
   m_ObjectHideFlags: 0
