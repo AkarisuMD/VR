@@ -14,7 +14,6 @@ public class Projectile : MonoBehaviour
         {
             GameObject Boule = Instantiate(proje, transform.position, Quaternion.identity) as GameObject;
             Boule.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * force);
-            Destroy(Boule, 2f);
         }
     }
 }
