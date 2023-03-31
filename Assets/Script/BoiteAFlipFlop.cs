@@ -66,7 +66,7 @@ public class BoiteAFlipFlop : MonoBehaviour
         source.Stop();
         FlipFlopGlobal.Instance.FlipFlop();
         _meshRenderer.materials = new Material[] { red };
-        DOTween.To(() => volumeRed.weight, x => volumeRed.weight = x, 0.2f, 1);
+        DOTween.To(() => volumeRed.weight, x => volumeRed.weight = x, 0.4f, 1);
         DOTween.To(() => volumeBlue.weight, x => volumeBlue.weight = x, 0f, 1);
     }
 }

@@ -8,7 +8,7 @@ public class missileTest : SpellBehaviour
     protected override void Update()
     {
         base.Update();
-        transform.position += -transform.up * Time.deltaTime * speed;
+        transform.position += transform.forward * Time.deltaTime * speed;
 
         if (timer < -20)
         {
