@@ -95,7 +95,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7548235420304840174}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -198,4 +198,6 @@ MonoBehaviour:
   Desactivate: {fileID: 2100000, guid: 5fa88f9a30f132a49a877a87acbe0654, type: 2}
   activatableObjects:
   - {fileID: 0}
-  flipFlop: 1
+  doRealFlipFlop: 0
+  trueflipFlop: 0
+  isInvert: 0
