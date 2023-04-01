@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
     [SerializeField] private GameObject Emitter;
     [SerializeField] private GameObject Recepter;
+    [SerializeField]
+    private GameObject EndPoint;
+    [SerializeField] private Vector3 endPointOffSet = Vector3.zero;
     [SerializeField] private List<DoorScript> doorToUnlock;
 
     [SerializeField] private LineRenderer lr;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float intensity;
 
     public bool HitSomething = true;
     [SerializeField] private bool isInverted;
@@ -23,6 +29,7 @@ public class Laser : MonoBehaviour
         if (Physics.Raycast(Emitter.transform.position, Emitter.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
             lr.SetPosition(1, hit.point - transform.position);
+            EndPoint.transform.position = hit.point + endPointOffSet;
             Debug.DrawRay(Emitter.transform.position, Emitter.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
             if (hit.collider.gameObject == Recepter && !HitSomething)
@@ -54,6 +61,7 @@ public class Laser : MonoBehaviour
                     {
                         door.Trigger();
                     }
+                    //lr.material.DOColor(Color.blue * Mathf.Pow(2f, intensity - 0.4169f), "_EmissionColor", 0.3f);
                 }
                 else
                 {
@@ -61,6 +69,7 @@ public class Laser : MonoBehaviour
                     {
                         door.UnTrigger();
                     }
+                    //lr.material.DOColor(Color.red * Mathf.Pow(2f, intensity - 0.4169f), "_EmissionColor", 0.3f);
                 }
             }
         }
@@ -68,7 +77,7 @@ public class Laser : MonoBehaviour
         {
             lr.SetPosition(1, -transform.forward * 1000);
             Debug.DrawRay(Emitter.transform.position, Emitter.transform.TransformDirection(Vector3.forward) * 1000, Color.red);
-            
+            EndPoint.transform.position = -transform.forward * 1000;
         }
     }
 }

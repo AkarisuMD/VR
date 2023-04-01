@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMOD;
+using DG.Tweening;
 
 public class TriggerActivator : MonoBehaviour
 {
@@ -11,10 +11,14 @@ public class TriggerActivator : MonoBehaviour
     //
     [SerializeField] private List<string> tagToCollide = new();
     [SerializeField] private List<ActivatableObject> objectsToActivate = new();
+
     [SerializeField] private AudioSource soundWhenActivated;
     [SerializeField] private AudioSource soundWhenDeActivated;
+
     private List<GameObject> colliders = new();
     [SerializeField] private Light lightComponent;
+    [SerializeField] private MeshRenderer meshRenderer;
+
     private bool IsActive = false;
     //
     //MONOBEHAVIOUR
@@ -25,14 +29,12 @@ public class TriggerActivator : MonoBehaviour
         {
             colliders.Add(other.gameObject);
             IsActive = true;
-            print("Trigger Activit");
             //SetTheLightColor(Color.green);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Success");
             ActivateOtherGameObject();
         }
         else if(other.gameObject.tag != "Untagged" || other.gameObject.tag != "Player")
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fail");
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -54,8 +56,9 @@ public class TriggerActivator : MonoBehaviour
         {
             activatable.UnTrigger();
         }
-        //SetTheLightColor(Color.white);
-        //soundWhenDeActivated.Play();
+        meshRenderer.material.color = Color.red;
+        lightComponent.DOColor(Color.red, 1);
+        soundWhenDeActivated.Play();
     }
 
     //
@@ -69,11 +72,8 @@ public class TriggerActivator : MonoBehaviour
         {
             activatable.Trigger();
         }
-        //soundWhenActivated.Play();
-    }
-
-    private void SetTheLightColor(Color color)
-    {
-        //lightComponent.color = color;
+        meshRenderer.material.color = Color.green;
+        lightComponent.DOColor(Color.green, 1);
+        soundWhenActivated.Play();
     }
 }
