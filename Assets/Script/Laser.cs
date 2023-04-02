@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
@@ -10,6 +9,9 @@ public class Laser : MonoBehaviour
     [SerializeField] private GameObject Recepter;
     [SerializeField]
     private GameObject EndPoint;
+    [SerializeField] private MeshRenderer recepterMaterial;
+    [SerializeField] private Material activate;
+    [SerializeField] private Material deactivate;
     [SerializeField] private Vector3 endPointOffSet = Vector3.zero;
     [SerializeField] private List<DoorScript> doorToUnlock;
 
@@ -61,6 +63,7 @@ public class Laser : MonoBehaviour
                     {
                         door.Trigger();
                     }
+                    recepterMaterial.material = activate;
                     //lr.material.DOColor(Color.blue * Mathf.Pow(2f, intensity - 0.4169f), "_EmissionColor", 0.3f);
                 }
                 else
@@ -69,6 +72,7 @@ public class Laser : MonoBehaviour
                     {
                         door.UnTrigger();
                     }
+                    recepterMaterial.material = deactivate;
                     //lr.material.DOColor(Color.red * Mathf.Pow(2f, intensity - 0.4169f), "_EmissionColor", 0.3f);
                 }
             }
