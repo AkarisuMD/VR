@@ -11,7 +11,6 @@ public class Target : MonoBehaviour
     public bool destroyDoSomething;
     public bool destroyDidSomething;
     public List<ActivatableObject> activatableObjects;
-
     private void Start()
     {
         spells= new List<SpellBehaviour>();

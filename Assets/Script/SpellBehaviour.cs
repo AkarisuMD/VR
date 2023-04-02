@@ -22,4 +22,5 @@ public abstract class SpellBehaviour : MonoBehaviour
     }
 
     public virtual void Effect(Target target) { }
+    public virtual void CibleEffect(Cible cible) { }
 }

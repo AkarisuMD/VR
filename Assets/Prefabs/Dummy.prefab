@@ -418,3 +418,4 @@ MonoBehaviour:
   destroyDidSomething: 0
   activatableObjects:
   - {fileID: 0}
+  ps: {fileID: 0}

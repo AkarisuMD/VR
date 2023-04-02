@@ -74,6 +74,8 @@ public class Cible : MonoBehaviour
             if (!sb.GetSpriptable().isOffensif) return;
             trueflipFlop = !trueflipFlop;
 
+            sb.CibleEffect(this);
+
             if (trueflipFlop) { GetComponent<MeshRenderer>().material = Desactivate; }
             else { GetComponent<MeshRenderer>().material = Activate; }
 
