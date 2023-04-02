@@ -52,6 +52,7 @@ public class Target : MonoBehaviour
         if (!destroyDoSomething || activatableObjects.Count <= 0)
         {
             destroyDidSomething = true;
+            gameObject.SetActive(false);
             return;
         }
 
